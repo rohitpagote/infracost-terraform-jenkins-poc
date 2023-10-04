@@ -100,7 +100,7 @@ def doBreakDown() {
             pwd;
 
             echo "=== print folder contents ===";
-            cd /var/jenkins_home/workspace/infracost-terraform-jenkins-poc-pipeline;
+            cd /var/jenkins_home/workspace/infracost-terraform-jenkins-poc-pipeline/google;
             ls -al;
 
             echo "=== infracost cost breakdown for current tf configuration ===";
