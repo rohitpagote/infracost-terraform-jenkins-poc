@@ -15,10 +15,12 @@ pipeline {
 
     stages {
         stage('google auth check'){
-            script{
-                withCredentials([file(credentialsId: 'GC-f2NYX6Ns', variable: 'gcp-service-account')]) {
-                    // sh("gcloud auth activate-service-account --key-file=${GC_KEY}")
-                    sh("cat gcp-service-account")
+            steps{
+                script{
+                    withCredentials([file(credentialsId: 'GC-f2NYX6Ns', variable: 'gcp-service-account')]) {
+                        // sh("gcloud auth activate-service-account --key-file=${GC_KEY}")
+                        sh("cat gcp-service-account")
+                    }
                 }
             }
         }
