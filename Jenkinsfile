@@ -14,44 +14,50 @@ pipeline {
     }
 
     stages {
-        stage('Infracost Version') {
-            steps {
-                script {
-                    try {
-                        getInfracostVersion()
-                    } catch (exc) {
-                        echo "Error occurred at infracost version stage}"
-                        throw exc
-                    }
-                }
+        stage('google auth check'){
+            withCredentials([file(credentialsId: 'GC-f2NYX6Ns', variable: 'gcp-service-account')]) {
+                // sh("gcloud auth activate-service-account --key-file=${GC_KEY}")
+                sh("cat gcp-service-account")
             }
         }
+        // stage('Infracost Version') {
+        //     steps {
+        //         script {
+        //             try {
+        //                 getInfracostVersion()
+        //             } catch (exc) {
+        //                 echo "Error occurred at infracost version stage}"
+        //                 throw exc
+        //             }
+        //         }
+        //     }
+        // }
 
-        stage('Checkout') {
-            steps {
-                script {
-                    try {
-                        doCheckout()
-                    } catch (exc) {
-                        echo "Error occurred at checkout stage"
-                        throw exc
-                    }
-                }
-            }
-        }
+        // stage('Checkout') {
+        //     steps {
+        //         script {
+        //             try {
+        //                 doCheckout()
+        //             } catch (exc) {
+        //                 echo "Error occurred at checkout stage"
+        //                 throw exc
+        //             }
+        //         }
+        //     }
+        // }
 
-        stage('Breakdown') {
-            steps {
-                script {
-                    try {
-                        doBreakDown()
-                    } catch (exc) {
-                        echo "Error occurred at breakdown stage"
-                        throw exc
-                    }
-                }
-            }
-        }
+        // stage('Breakdown') {
+        //     steps {
+        //         script {
+        //             try {
+        //                 doBreakDown()
+        //             } catch (exc) {
+        //                 echo "Error occurred at breakdown stage"
+        //                 throw exc
+        //             }
+        //         }
+        //     }
+        // }
     }
     post {
         cleanup {
