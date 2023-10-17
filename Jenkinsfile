@@ -41,8 +41,8 @@ pipeline {
                         // sh("cat ${GCPServiceAccount}")
                         sh( """
                             ls
-                            def info = "$GCPServiceAccount"
-                            echo "$info"
+                            info = "$GCPServiceAccount"
+                            echo $info
                             echo "$GCPServiceAccount" >> credentials
                             ls
                             """
