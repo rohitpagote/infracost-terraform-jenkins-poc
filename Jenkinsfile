@@ -38,7 +38,7 @@ pipeline {
                 script{
                     withCredentials([file(credentialsId: 'GC-f2NYX6Ns', variable: 'project_id')]) {
                         // sh("gcloud auth activate-service-account --key-file=${GC_KEY}")
-                        sh("cat ${project_id}")
+                        // sh("cat ${project_id}")
                     }
                 }
             }
