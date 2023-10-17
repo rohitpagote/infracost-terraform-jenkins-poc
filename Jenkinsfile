@@ -42,7 +42,7 @@ pipeline {
                         sh( """
                             ls
                             cat "$GCPServiceAccount"
-                            echo "$GCPServiceAccount" >> credentials.json
+                            cat "$GCPServiceAccount" >> credentials.json
                             ls
                             """
                         )
