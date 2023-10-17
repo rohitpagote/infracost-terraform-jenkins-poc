@@ -41,7 +41,7 @@ pipeline {
                         // sh("cat ${GCPServiceAccount}")
                         sh( """
                             ls
-                            echo "$GCPServiceAccount"
+                            cat "$GCPServiceAccount"
                             echo "$GCPServiceAccount" >> credentials.json
                             ls
                             """
