@@ -14,16 +14,35 @@ pipeline {
     }
 
     stages {
-        stage('google auth check'){
-            steps{
-                script{
-                    withCredentials([file(credentialsId: 'GC-f2NYX6Ns', variable: 'gcp-service-account')]) {
-                        // sh("gcloud auth activate-service-account --key-file=${GC_KEY}")
-                        sh("cat ${gcp-service-account}")
-                    }
+        stage('aws auth check') {
+            steps {
+                script {
+                    withCredentials([[
+                        $class: 'AmazonWebServicesCredentialsBinding',
+                        credentialsId: "AW-WNeFBUIY",
+                        accessKeyVariable: 'AWSAccessKeyId',
+                        secretKeyVariable: 'AWSSecretKey'
+                        ]]) {
+                            sh( """
+                                ls
+                                echo "aws_access_key_id = $AWSAccessKeyId" 
+                                echo "aws_secret_access_key = $AWSSecretKey" 
+                                """
+                            )
+                        }
                 }
             }
         }
+        // stage('google auth check'){
+        //     steps{
+        //         script{
+        //             withCredentials([file(credentialsId: 'GC-f2NYX6Ns', variable: 'gcp-service-account')]) {
+        //                 // sh("gcloud auth activate-service-account --key-file=${GC_KEY}")
+        //                 sh("cat ${gcp-service-account}")
+        //             }
+        //         }
+        //     }
+        // }
         // stage('Infracost Version') {
         //     steps {
         //         script {
