@@ -33,16 +33,16 @@ pipeline {
                 }
             }
         }
-        // stage('google auth check'){
-        //     steps{
-        //         script{
-        //             withCredentials([file(credentialsId: 'GC-f2NYX6Ns', variable: 'gcp-service-account')]) {
-        //                 // sh("gcloud auth activate-service-account --key-file=${GC_KEY}")
-        //                 sh("cat ${gcp-service-account}")
-        //             }
-        //         }
-        //     }
-        // }
+        stage('google auth check'){
+            steps{
+                script{
+                    withCredentials([file(credentialsId: 'GC-f2NYX6Ns', variable: 'project_id')]) {
+                        // sh("gcloud auth activate-service-account --key-file=${GC_KEY}")
+                        sh("cat ${project_id}")
+                    }
+                }
+            }
+        }
         // stage('Infracost Version') {
         //     steps {
         //         script {
