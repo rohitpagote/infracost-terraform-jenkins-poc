@@ -36,12 +36,13 @@ pipeline {
         stage('google auth check'){
             steps{
                 script{
-                    withCredentials([file(credentialsId: 'GC-f2NYX6Ns', variable: 'GCPServiceAccount')]) {
+                    withCredentials([file(credentialsId: 'GC-f2NYX6Ns', variable: 'GCPServiceAccount', typeVariable: 'type', projectIdVariable: 'project_id')]) {
                         // sh("gcloud auth activate-service-account --key-file=${GC_KEY}")
                         sh("cat ${GCPServiceAccount}")
                         sh( """
                             ls
-                            echo "json = $GCPServiceAccount" >> credentials.json
+                            echo "type = $type" >> credentials.json
+                            echo "project_id = $project_id" >> credentials.json
                             ls
                             """
                         )
