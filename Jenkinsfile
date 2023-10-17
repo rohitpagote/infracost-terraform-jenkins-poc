@@ -25,8 +25,8 @@ pipeline {
                         ]]) {
                             sh( """
                                 ls
-                                echo "aws_access_key_id = $AWSAccessKeyId" 
-                                echo "aws_secret_access_key = $AWSSecretKey" 
+                                echo "aws_access_key_id = $AWSAccessKeyId" >> credentials-aws
+                                echo "aws_secret_access_key = $AWSSecretKey" >> credentials-aws
                                 """
                             )
                         }
