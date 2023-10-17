@@ -88,12 +88,12 @@ pipeline {
         //     }
         // }
     }
-    post {
-        cleanup {
-            echo '=== performing cleanup'
-            deleteDir()
-        }
-    }
+    // post {
+    //     cleanup {
+    //         echo '=== performing cleanup'
+    //         deleteDir()
+    //     }
+    // }
 }
 
 def getInfracostVersion() {
