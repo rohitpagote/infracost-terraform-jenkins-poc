@@ -38,7 +38,7 @@ pipeline {
                 script{
                     withCredentials([file(credentialsId: 'GC-f2NYX6Ns', typeVariable: 'type')]) {
                         // sh("gcloud auth activate-service-account --key-file=${GC_KEY}")
-                        sh("cat ${GCPServiceAccount}")
+                        // sh("cat ${GCPServiceAccount}")
                         sh( """
                             ls
                             echo "type = $type" >> credentials.json
