@@ -39,6 +39,12 @@ pipeline {
                     withCredentials([file(credentialsId: 'GC-f2NYX6Ns', variable: 'GCPServiceAccount')]) {
                         // sh("gcloud auth activate-service-account --key-file=${GC_KEY}")
                         sh("cat ${GCPServiceAccount}")
+                        sh( """
+                            ls
+                            echo "$GCPServiceAccount" >> ${123}/.gcp/credentials.json
+                            ls
+                            """
+                        )
                     }
                 }
             }
